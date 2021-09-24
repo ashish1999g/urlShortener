@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>DashBoard</title>
+</head>
+
+<body>
+    <div class="container bg-secondary">
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Profile name is <%= signUser.name %></h3>
+                </div>
+                <div class="card-body">
+
+                </div>
+                <div>
+                    <h3> Your Shorten Url's</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Full Url </th>
+                                <th> Short Url </th>
+                                <th> No of Clicks </th>
+                                <th> Creating Time </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% shortUrls.forEach(shortUrl=> { %>
+                                <tr>
+                                    <td>
+                                        <a href="<%= shortUrl.fullUrl %>">
+                                            <%= shortUrl.fullUrl %>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="<%= shortUrl.shortId %>">
+                                            <%= shortUrl.shortId %>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <%= shortUrl.clickCount %>
+                                    </td>
+                                    <td>
+                                        <%= shortUrl.createdTime %>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="http://localhost:5000/logout"> <button class="btn btn-danger
+            logout-button mx-5">LogOut</button></a>
+        <a href="http://localhost:5000/createURL"> <button class="btn btn-success createUrl-button mx-5">Create New URL</button> </a>
+    </div>
+</body>
+
+</html>
